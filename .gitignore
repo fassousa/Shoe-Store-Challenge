@@ -29,6 +29,8 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 .byebug_history
+.rspec
+.ruby-version
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
