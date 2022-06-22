@@ -1,4 +1,4 @@
-# Shoe store exercise
+# Shoe Store Exercise
 
 ## Getting Started
 
