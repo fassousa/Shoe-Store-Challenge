@@ -2,7 +2,10 @@
 
 ## Getting Started
 
-Run the [Shoe Store](https://github.com/fassousa/Shoe-Websocket-Server).
+First, run the [Shoe Store](https://github.com/fassousa/Shoe-Websocket-Server) repository.
+```
+(bin/)websocketd --port=8080 ruby inventory.rb
+```
 
 This app is using **ruby version 3.0.0**, **rails version 7.0.3** and **sqlite3 version 1.4**
 
