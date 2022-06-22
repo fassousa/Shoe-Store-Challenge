@@ -1,11 +1,15 @@
 class Api::V1::StoresController < ApplicationController
-  before_action :set_store, only: %i[ show update destroy ]
+  before_action :set_store, only: %i[show update destroy]
 
   # GET /stores
   def index
     @stores = Store.all
 
-    render json: @stores
+    if @stores.present?
+      render json: @stores
+    else
+      render json: { error: 'No stores found' }, status: :not_found
+    end
   end
 
   # GET /stores/1
@@ -38,14 +42,21 @@ class Api::V1::StoresController < ApplicationController
     @store.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_store
-      @store = Store.find(params[:id])
-    end
+  def inventory
+    # call store service to fetch data
+    StoreService.new.fetch_data
+    redirect_to api_v1_stores_url
+  end
 
-    # Only allow a list of trusted parameters through.
-    def store_params
-      params.require(:store).permit(:name, :model, :inventory)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_store
+    @store = Store.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def store_params
+    params.require(:store).permit(:name, :model, :inventory)
+  end
 end
