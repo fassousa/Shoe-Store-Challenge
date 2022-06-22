@@ -43,6 +43,8 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'faye-websocket'
+  gem 'rspec-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
