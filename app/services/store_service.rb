@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'faye/websocket'
 require 'eventmachine'
 
@@ -19,5 +17,6 @@ class StoreService
   def monitor(data)
     store = Store.find_or_create_by(name: data['store'])
     store.update!(model: data['model'], inventory: data['inventory'])
+    store.update_status(data['inventory'])
   end
 end
